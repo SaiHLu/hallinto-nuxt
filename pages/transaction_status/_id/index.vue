@@ -38,13 +38,17 @@ import TransactionStatus from '@/vuex-orm/models/TransactionStatus'
 @Component({ layout: 'dashboard' })
 export default class PagesUpdateTransactionStatus extends Vue {
   valid = true
+  $refs!: {
+    form: HTMLFormElement
+  }
+
   name = {
-    value: null,
+    value: '',
     rules: [(v: string) => !!v || 'Transaction Name is required'],
   }
 
   description = {
-    value: null,
+    value: '',
     rules: [(v: string) => !!v || 'Please provide a short description'],
   }
 
@@ -69,7 +73,9 @@ export default class PagesUpdateTransactionStatus extends Vue {
   updateTransaction() {
     if (this.$refs.form.validate()) {
       TransactionStatus.update({
-        where: this.transaction.id,
+        where: ({ id }) => {
+          return id === this.transaction?.id
+        },
         data: {
           name: this.name.value,
           description: this.description.value,

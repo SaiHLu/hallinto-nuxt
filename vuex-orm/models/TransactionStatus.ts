@@ -9,8 +9,8 @@ export default class TransactionStatus extends Model {
   static fields() {
     return {
       id: this.string(''),
-      name: this.string(null),
-      description: this.string(null).nullable(),
+      name: this.string(''),
+      description: this.string('').nullable(),
       createdAt: this.attr(dayjs()),
       updatedAt: this.attr(dayjs()),
       deletedAt: this.attr(null).nullable(),
@@ -20,7 +20,7 @@ export default class TransactionStatus extends Model {
   // states type
   id!: string
   name!: string
-  description!: string | null
+  description!: string
   createdAt!: Dayjs | any
   updatedAt!: Dayjs | any
   deletedAt!: Dayjs | any | null

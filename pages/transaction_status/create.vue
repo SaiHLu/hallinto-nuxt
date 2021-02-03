@@ -37,6 +37,10 @@ import TransactionStatus from '@/vuex-orm/models/TransactionStatus'
 @Component({ layout: 'dashboard' })
 export default class PagesCreateTransactionStatus extends Vue {
   valid = true
+  $refs!: {
+    form: HTMLFormElement
+  }
+
   name = {
     value: null,
     rules: [(v: string) => !!v || 'Transaction Name is required'],

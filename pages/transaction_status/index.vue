@@ -82,7 +82,7 @@ export default class PagesTransactionStatus extends Vue {
     return TransactionStatus.all()
   }
 
-  deleteTransaction(id) {
+  deleteTransaction(id: string) {
     TransactionStatus.delete(id)
   }
 
